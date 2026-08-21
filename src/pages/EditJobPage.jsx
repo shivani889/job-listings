@@ -19,30 +19,30 @@ const EditJobPage = ({ updateJobSubmit }) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const submitForm = (e) => {
-    e.preventDefault();
+  const submitForm = async (e) => {
+  e.preventDefault();
 
-    const updatedJob = {
-      id,
-      title,
-      type,
-      location,
-      description,
-      salary,
-      company: {
-        name: companyName,
-        description: companyDescription,
-        contactEmail,
-        contactPhone,
-      },
-    };
-
-    updateJobSubmit(updatedJob);
-
-    toast.success('Job Updated Successfully');
-
-    return navigate(`/jobs/${id}`);
+  const updatedJob = {
+    id,
+    title,
+    type,
+    location,
+    description,
+    salary,
+    company: {
+      name: companyName,
+      description: companyDescription,
+      contactEmail,
+      contactPhone,
+    },
   };
+
+  await updateJobSubmit(updatedJob);
+
+  toast.success('Job Updated Successfully');
+
+  navigate(`/jobs/${id}`);
+};
 
   return (
     <section className="bg-indigo-50">
