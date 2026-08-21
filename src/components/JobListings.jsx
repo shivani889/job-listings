@@ -15,7 +15,7 @@ const JobListings = ({ isHome = false }) => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = '/api/jobs';
+      const apiUrl = 'https://job-listings-api-z99n.onrender.com/jobs';
 
       try {
         const res = await fetch(apiUrl);
