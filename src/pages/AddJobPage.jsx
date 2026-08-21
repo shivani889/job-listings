@@ -15,29 +15,29 @@ const AddJobPage = ({ addJobSubmit }) => {
 
   const navigate = useNavigate();
 
-  const submitForm = (e) => {
-    e.preventDefault();
+const submitForm = async (e) => {
+  e.preventDefault();
 
-    const newJob = {
-      title,
-      type,
-      location,
-      description,
-      salary,
-      company: {
-        name: companyName,
-        description: companyDescription,
-        contactEmail,
-        contactPhone,
-      },
-    };
-
-    addJobSubmit(newJob);
-
-    toast.success('Job Added Successfully');
-
-    return navigate('/jobs');
+  const newJob = {
+    title,
+    type,
+    location,
+    description,
+    salary,
+    company: {
+      name: companyName,
+      description: companyDescription,
+      contactEmail,
+      contactPhone,
+    },
   };
+
+  await addJobSubmit(newJob);
+
+  toast.success('Job Added Successfully');
+
+  navigate('/jobs');
+};
 
   return (
     <section className="bg-indigo-50">
