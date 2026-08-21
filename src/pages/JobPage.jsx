@@ -113,6 +113,9 @@ const JobPage = ({ deleteJob }) => {
 
 const jobLoader = async ({ params }) => {
   const res = await fetchhttps://job-listings-api-z99n.onrender.com/jobs/${params.id}`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch job: ${res.status}`);
+  }
   const data = await res.json();
   return data;
 };
