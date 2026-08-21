@@ -26,24 +26,40 @@ const App = () => {
   };
 
   // Delete Job
-  const deleteJob = async (id) => {
-    const res = await fetch(`https://job-listings-api-z99n.onrender.com/jobs/${id}`, {
+ const deleteJob = async (id) => {
+  const res = await fetch(
+    `https://job-listings-api-z99n.onrender.com/jobs/${id}`,
+    {
       method: 'DELETE',
-    });
-    return;
-  };
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error(`Failed to delete job: ${res.status}`);
+  }
+
+  return true;
+};
 
   // Update job
-  const updateJob = async (job) => {
-    const res = await fetch(`https://job-listings-api-z99n.onrender.com/jobs/${job.id}`, {
+ const updateJob = async (job) => {
+  const res = await fetch(
+    `https://job-listings-api-z99n.onrender.com/jobs/${job.id}`,
+    {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(job),
-    });
-    return;
-  };
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error(`Failed to update job: ${res.status}`);
+  }
+
+  return await res.json();
+};
 
   const router = createBrowserRouter(
     createRoutesFromElements(
