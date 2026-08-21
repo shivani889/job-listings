@@ -15,7 +15,7 @@ import NotFoundPage from './pages/NotFoundPage';
 const App = () => {
   // Add New Job
   const addJob = async (newJob) => {
-    const res = await fetch('/api/jobs', {
+    const res = await fetch('https://job-listings-api-z99n.onrender.com/jobs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const App = () => {
 
   // Delete Job
   const deleteJob = async (id) => {
-    const res = await fetch(`/api/jobs/${id}`, {
+    const res = await fetch(`https://job-listings-api-z99n.onrender.com/jobs/${id}`, {
       method: 'DELETE',
     });
     return;
@@ -35,7 +35,7 @@ const App = () => {
 
   // Update job
   const updateJob = async (job) => {
-    const res = await fetch(`/api/jobs/${job.id}`, {
+    const res = await fetch(`https://job-listings-api-z99n.onrender.com/jobs/${job.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
